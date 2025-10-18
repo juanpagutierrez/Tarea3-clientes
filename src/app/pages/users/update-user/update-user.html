@@ -1,0 +1,28 @@
+<h2>Editar usuario</h2>
+
+@if (error) {
+    <p>Ooops! Algo salió mal</p>
+}
+
+@if (!error && user.name) {
+    <form [formGroup]="form" (ngSubmit)="doOnSubmit()">
+        <div>
+            <label for="name">Name: </label>
+            <input type="text" name="name" formControlName="name">
+        </div>
+        <div>
+            <label for="email">Email: </label>
+            <input type="email" name="email" formControlName="email">
+        </div>
+        <div>
+            <label>
+                <input type="checkbox" formControlName="terms">
+                Acepto los términos y condiciones
+            </label>
+        </div>
+        <div>
+            <button type="button" (click)="cancel()">Cancel</button>
+            <button type="submit">Send</button>
+        </div>
+    </form>
+}

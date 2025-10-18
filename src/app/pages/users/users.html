@@ -1,0 +1,38 @@
+<p>users works!</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if(isLoading){
+            <tr>
+                <td colspan="4">Loading...</td>
+            </tr>
+        }
+        @else if (users.length === 0) {
+            <tr>
+                <td colspan="4">No users</td>
+            </tr>
+        }
+        @for(item of users; track item.id){
+            <tr>
+                <td>{{item.id}}</td>
+                <td>{{item.name | uppercase}}</td>
+                <td>{{item.email}}</td>
+                <td>
+                    <a [routerLink]="['/users/update', item.id]">
+                        Edit
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<router-outlet></router-outlet>
